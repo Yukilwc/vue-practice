@@ -19,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/js/form-validator',
     name: 'js-form-validator',
     component: () => import('@/views/js/form-validator.vue')
+  },
+  {
+    path:'/template/setup-template',
+    name:'template-setup-template',
+    component: ()=> import('@/views/template/setup-template.vue')
   }
 ]
 
