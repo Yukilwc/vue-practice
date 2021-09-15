@@ -1,8 +1,10 @@
 <template>
   <div>setup script</div>
   <div class="">{{ $testGlobal() }}</div>
-  <div class="">{{ provideTest() }}</div>
+  <div class="">{{ provideTest && provideTest() }}</div>
   <div class="">{{ provideTestStr }}</div>
+  <GlobalComp></GlobalComp>
+  <div class="" v-test-directive></div>
 </template>
 
 <script lang='ts'>
@@ -17,9 +19,9 @@ export default defineComponent({
     // const instance = getCurrentInstance();
     // let { $testGlobal, $testStr} = instance?.proxy;
     // console.log('==========$testGlobal',$testGlobal,$testStr)
-    let provideTest = inject<IProductTest>("provideTest") 
+    let provideTest = inject<IProductTest>("provideTest");
     let provideTestStr = inject<string>("provideTestStr", "default");
-   provideTest&& provideTest();
+    provideTest && provideTest();
     onMounted(() => {
       // throw new Error('onMouted error')
     });

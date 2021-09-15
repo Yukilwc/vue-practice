@@ -36,5 +36,16 @@ app.provide<string>('provideTestStr', provideTestStr)
 // 性能监听
 
 app.config.performance = true
+import GlobalComp from '@/components/GlobalComp.vue'
+// 全局组件注册
+app.component('GlobalComp', GlobalComp)
+// 全局指令注册
+import { testDirective } from '@/directives/test-directive'
+app.directive('test-directive',testDirective)
+app.directive('test-directive-2',{
+  mounted(el,binding) {
+
+  }
+})
 
 app.use(store).use(router).mount('#app')
