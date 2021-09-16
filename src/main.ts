@@ -33,7 +33,7 @@ app.provide<IProductTest>('provideTest', () => {
   return 'provideTest'
 })
 app.provide<string>('provideTestStr', provideTestStr)
-app.provide<typeof timer>('timer',timer)
+app.provide<typeof timer>('timer', timer)
 
 // 性能监听
 
@@ -43,11 +43,20 @@ import GlobalComp from '@/components/GlobalComp.vue'
 app.component('GlobalComp', GlobalComp)
 // 全局指令注册
 import { testDirective } from '@/directives/test-directive'
-app.directive('test-directive',testDirective)
-app.directive('test-directive-2',{
-  mounted(el,binding) {
+app.directive('test-directive', testDirective)
+app.directive('test-directive-2', {
+  mounted(el, binding) {
 
   }
 })
+// Mixin
+// mixin 有了composition api了，还需要mixin吗？mixin本质是对一组响应式属性，生命周期，方法得复用，而mixin可实现得，compositon api也可以实现
+
+// Plugin
+import { pluginTest } from './plugins/pluginTest'
+app.use(pluginTest,{config: true})
+
+// 多语言
+import '@/language/index'
 
 app.use(store).use(router).mount('#app')
