@@ -21,14 +21,19 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/js/form-validator.vue')
   },
   {
-    path:'/template/setup-script-template',
-    name:'template-setup-script-template',
-    component: ()=> import('@/views/template/setup-script-template.vue')
+    path: '/template/setup-script-template',
+    name: 'template-setup-script-template',
+    component: () => import('@/views/template/setup-script-template.vue')
   },
-{
-    path:'/template/setup-template',
-    name:'template-setup-template',
-    component: ()=> import('@/views/template/setup-template.vue')
+  {
+    path: '/template/setup-template',
+    name: 'template-setup-template',
+    component: () => import('@/views/template/setup-template.vue')
+  },
+  {
+    path: '/js/progress',
+    name: "js-progress",
+    component: () => import('@/views/js/progress/index.vue')
   }
 ]
 
