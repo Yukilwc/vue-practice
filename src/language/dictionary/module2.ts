@@ -1,5 +1,8 @@
-export default {
-    main: {
-        ceshi2: ['测试2','test2']
+
+const lang
+ = {
+    main2: {
+        ceshi2: ['测试2', '']
     }
 }
+export default lang

@@ -5,13 +5,25 @@
   <div class="">{{ provideTestStr }}</div>
   <GlobalComp></GlobalComp>
   <div class="" v-test-directive></div>
+  <div class="">{{ $t("main1.ceshi1") }}</div>
+  <div class="">{{ $t("main2.ceshi2") }}</div>
+  <div class="">
+    <button @click="switchLang">{{ langText }}</button>
+  </div>
 </template>
 
 <script lang='ts'>
 // 全演示流程
 import { IProductTest } from "@/typings/types";
-import { defineComponent, getCurrentInstance, inject, onMounted } from "vue";
-
+import {
+  computed,
+  defineComponent,
+  getCurrentInstance,
+  inject,
+  onMounted,
+} from "vue";
+import { useI18n } from "vue-i18n";
+import { i18n } from "@/language/index";
 export default defineComponent({
   components: {},
   setup(props, context) {
@@ -25,9 +37,22 @@ export default defineComponent({
     onMounted(() => {
       // throw new Error('onMouted error')
     });
+    const { t } = useI18n();
+    let langText = computed(() => {
+      return t("common.qiehuanyuyan");
+    });
+    const switchLang = () => {
+      if ((i18n.global.locale === "zh-CN")) {
+        i18n.global.locale = "en-US";
+      } else {
+        i18n.global.locale = "zh-CN";
+      }
+    };
     return {
       provideTest,
       provideTestStr,
+      langText,
+      switchLang,
     };
   },
   computed: {
