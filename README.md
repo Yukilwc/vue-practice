@@ -72,3 +72,15 @@ Mixin 很容易发生冲突：因为每个 mixin 的 property 都被合并到同
 ### 注意事项
 
 > 最好使用npm install,而不要使用cnpm,因为cnpm会引起Error: Cannot find module vue-loader-v16/package.json 等错误
+
+### 配置文件
+
+> 不论是vue.config.js还是vite.config.js，最好都不要加成ts，好像tsconfig.json中没包含对配置js的解析
+### 关于eslint
+
+#### 彻底关闭(不推荐)
+
+* vue.config.js添加 lintOnSave: false
+* 注释 .ellintrc.js中，extends中的插件，但是extends数组还是要保留的。
+
+#### 仅添加部分rules的off
