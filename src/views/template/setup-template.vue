@@ -14,7 +14,6 @@
 
 <script lang='ts'>
 // 全演示流程
-import { IProductTest } from "@/typings/types";
 import {
   computed,
   defineComponent,
@@ -24,6 +23,7 @@ import {
 } from "vue";
 import { useI18n } from "vue-i18n";
 import { i18n } from "@/language/index";
+import {NProvide} from '@/typings/provide'
 export default defineComponent({
   components: {},
   setup(props, context) {
@@ -31,7 +31,7 @@ export default defineComponent({
     // const instance = getCurrentInstance();
     // let { $testGlobal, $testStr} = instance?.proxy;
     // console.log('==========$testGlobal',$testGlobal,$testStr)
-    let provideTest = inject<IProductTest>("provideTest");
+    let provideTest = inject<NProvide.IProductTest>("provideTest");
     let provideTestStr = inject<string>("provideTestStr", "default");
     provideTest && provideTest();
     onMounted(() => {
@@ -42,7 +42,7 @@ export default defineComponent({
       return t("common.qiehuanyuyan");
     });
     const switchLang = () => {
-      if ((i18n.global.locale === "zh-CN")) {
+      if (i18n.global.locale === "zh-CN") {
         i18n.global.locale = "en-US";
       } else {
         i18n.global.locale = "zh-CN";

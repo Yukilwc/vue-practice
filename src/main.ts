@@ -23,13 +23,11 @@ app.config.globalProperties.$testGlobal = $testGlobal
 app.config.globalProperties.$testStr = 'testStr'
 console.log('==========', app.config.globalProperties.$testStr)
 
-import { IProductTest } from '@/typings/types'
 import { timer } from './utils/tools'
 // 全局变量注入provide方案 需要通过泛型进行变量类型的规范和推导
 
 const provideTestStr = 'provideTestStr '
-
-app.provide<IProductTest>('provideTest', () => {
+app.provide<NProvide.IProductTest>('provideTest', () => {
   return 'provideTest'
 })
 app.provide<string>('provideTestStr', provideTestStr)
@@ -55,6 +53,7 @@ app.use(pluginTest, { config: true })
 
 // 多语言
 import {i18n} from '@/language/index'
+import { NProvide } from './typings/provide'
 // console.log('==========i18n',i18n)
 // import { createI18n } from 'vue-i18n'
 // const messages = {
