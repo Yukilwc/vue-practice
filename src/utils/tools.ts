@@ -9,7 +9,7 @@ const timer = (time: number) => {
 }
 
 const provideTestInJs: NProvide.IProductTest = () => '测试ts中对全局类型使用'
-
+testValue
 export {
     timer
 }

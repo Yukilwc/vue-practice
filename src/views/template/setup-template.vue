@@ -23,7 +23,7 @@ import {
 } from "vue";
 import { useI18n } from "vue-i18n";
 import { i18n } from "@/language/index";
-import {NProvide} from '@/typings/provide'
+import { NProvide } from "@/typings/provide";
 export default defineComponent({
   components: {},
   setup(props, context) {
