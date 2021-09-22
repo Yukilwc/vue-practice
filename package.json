@@ -11,7 +11,7 @@
     "viteserve": "vite preview",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "tsc":"tsc -t ESNext /src/utils/EditableTable.ts"
+    "tsc":"tsc -t ESNext ./src/utils/EditableTable.ts"
   },
   "dependencies": {
     "core-js": "^3.6.5",

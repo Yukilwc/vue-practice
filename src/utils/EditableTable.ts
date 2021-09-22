@@ -54,7 +54,7 @@ abstract class Table {
             this.list.push(this.rowFactory.create().FromAPIRow(item));
         });
         this.list.push(this.rowFactory.create().AddRow())
-        console.log("==========table fromBackend ", this);
+        // console.log("==========table fromBackend ", this);
         return this;
     }
     // 返回当前正在添加状态的行，一般都是最后一行
@@ -127,7 +127,17 @@ abstract class Table {
             }
         }
         // 检查全部元素是否都独一无二
-        let notUniqueRes = {}
+        let notUniqueRes: {
+            currentRow: Row | null
+            currentIndex: number
+            repeatRow: Row | null
+            repeatIndex: number
+        } = {
+            currentRow: null,
+            currentIndex: -1,
+            repeatRow: null,
+            repeatIndex: -1
+        }
         let findIsNotUnique = this.list.find((currentRow, currentIndex) => {
             let res = isNotUnique(currentRow, currentIndex, this.list)
             if (res) {
@@ -161,66 +171,66 @@ abstract class RowFactory {
 
 // 使用举例
 
-class MyRow extends Row {
-    data: Record<string, any> = {
-        id: 1,
-        name: '',
-    }
-    FromAPIRow = (res: Record<string, any>) => {
-        // mapObj(this.data, res);
-        this.data.id = res.id
-        this.data.name = res.name
-        this.status.isEditing = false
-        this.status.isAddRow = false
-        return this;
+// class MyRow extends Row {
+//     data: Record<string, any> = {
+//         id: 1,
+//         name: '',
+//     }
+//     FromAPIRow = (res: Record<string, any>) => {
+//         // mapObj(this.data, res);
+//         this.data.id = res.id
+//         this.data.name = res.name
+//         this.status.isEditing = false
+//         this.status.isAddRow = false
+//         return this;
 
-    }
-    check(): string {
-        // let va = new Validator()
-        // va.add(this.data.id, [['isNotEmpty', '请选择id']])
-        // va.add(this.data.name, [['isNotEmpty', '请选择name']])
-        // let { errorMsg } = va.start()
-        // return errorMsg;
-        return ''
-    }
-    getParams(): Record<string, any> {
-        // return omit(this.data, ['name'])
-        return { id: this.data.id }
-    }
+//     }
+//     check(): string {
+//         // let va = new Validator()
+//         // va.add(this.data.id, [['isNotEmpty', '请选择id']])
+//         // va.add(this.data.name, [['isNotEmpty', '请选择name']])
+//         // let { errorMsg } = va.start()
+//         // return errorMsg;
+//         return ''
+//     }
+//     getParams(): Record<string, any> {
+//         // return omit(this.data, ['name'])
+//         return { id: this.data.id }
+//     }
 
-}
+// }
 
-// 业务相关的可编辑表格类
-class MyTable extends Table {
-    constructor(rowFactory: RowFactory) {
-        super(rowFactory)
-    }
-    getParams(): Record<string, any>[] {
-        let params = this.list.filter(item => !item.status.isAddRow).map(item => item.data)
-        params = params.map(item => {
-            // return omit(item, ['name'])
-            return item
-        })
-        console.log('==========table get params', params)
-        return params
+// // 业务相关的可编辑表格类
+// class MyTable extends Table {
+//     constructor(rowFactory: RowFactory) {
+//         super(rowFactory)
+//     }
+//     getParams(): Record<string, any>[] {
+//         let params = this.list.filter(item => !item.status.isAddRow).map(item => item.data)
+//         params = params.map(item => {
+//             // return omit(item, ['name'])
+//             return item
+//         })
+//         console.log('==========table get params', params)
+//         return params
 
-    }
+//     }
 
-}
+// }
 
-// 实现工厂方法
+// // 实现工厂方法
 
-class MyRowFactory extends RowFactory {
-    create = () => {
-        return new MyRow()
-    }
+// class MyRowFactory extends RowFactory {
+//     create = () => {
+//         return new MyRow()
+//     }
 
-}
+// }
 
 
-let factory = new MyRowFactory()
-const table = new MyTable(factory)
+// let factory = new MyRowFactory()
+// const table = new MyTable(factory)
 
 export {
-    MyTable
+    Table, Row, RowFactory
 }
