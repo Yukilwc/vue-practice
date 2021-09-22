@@ -67,6 +67,10 @@ Mixin 很容易发生冲突：因为每个 mixin 的 property 都被合并到同
 
 ## Typescript
 
+### class
+
+属性是可以不赋值初始化的，前提是，构造函数中已经进行了赋值
+
 ### type与interface
 
 * type能定义原始类型，从定义的广度上比interface大
