@@ -1,4 +1,4 @@
-import { checkRepeat, omit } from "@/utils/tools"
+import { checkRepeat, omit, styleList2Str } from "@/utils/tools"
 // import {omit} from '@/utils/js-tools'
 
 describe("tools checkRepeat", () => {
@@ -37,7 +37,7 @@ describe("tools checkRepeat", () => {
     })
 })
 
-describe("js-tools omit", () => {
+describe("tools omit", () => {
     it('omit删除对象中元素', () => {
         let obj = {
             a: ['c'],
@@ -62,5 +62,25 @@ describe("js-tools omit", () => {
             f: 0,
 
         })
+    })
+})
+
+describe("tools  styleList2Str", () => {
+    it('样式字符串生成', () => {
+        let params: { name: string, value: string }[] = []
+        let res = styleList2Str(params)
+        expect(res).toEqual('')
+        res = styleList2Str([
+            {
+                name:'width',
+                value:'10px'
+            },
+            {
+                name:'background-color',
+                value:'white',
+            }
+        ])
+        expect(res).toEqual('width:10px;background-color:white;')
+
     })
 })

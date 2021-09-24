@@ -65,11 +65,27 @@ const omit = (obj: any, list: readonly string[]) => {
     // });
     // return newObj
 }
+type IStyleList2Str = (styleList: {name:string,value:string}[]) => string
+const styleList2Str: IStyleList2Str = (styleList) => {
+    let styleStr = styleList.reduce((total, curr) => {
+        let name = curr.name
+        let value = curr.value
+        if (name && value) {
+            let styleItem = `${name}:${value};`
+            return total + styleItem
+        }
+        else {
+            return total
+        }
+    }, '')
+    return styleStr
 
+}
 
 // const provideTestInJs: NProvide.IProductTest = () => '测试ts中对全局类型使用'
 export {
     timer,
     checkRepeat,
-    omit
+    omit,
+    styleList2Str
 }
