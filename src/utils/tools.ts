@@ -1,3 +1,5 @@
+
+import * as R from 'ramda'
 // import { NProvide } from "@/typings/provide";
 
 const timer = (time: number) => {
@@ -50,9 +52,24 @@ const checkRepeat: ICheckRepeat = (list, compareFunc) => {
 
 }
 
+// type IOmit = (obj: Record<string, any>, list: string[]) =>   Record<string, any>
+
+const omit = (obj: any, list: readonly string[]) => {
+    return R.omit(list, obj)
+    // if (!obj || !list || list.length <= 0) {
+    //     return {...obj}
+    // }
+    // let newObj = { ...obj }
+    // list.forEach(key => {
+    //     newObj[key] = undefined
+    // });
+    // return newObj
+}
+
 
 // const provideTestInJs: NProvide.IProductTest = () => '测试ts中对全局类型使用'
 export {
     timer,
-    checkRepeat
+    checkRepeat,
+    omit
 }

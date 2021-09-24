@@ -1,4 +1,5 @@
-import { checkRepeat } from "@/utils/tools"
+import { checkRepeat, omit } from "@/utils/tools"
+// import {omit} from '@/utils/js-tools'
 
 describe("tools checkRepeat", () => {
     it("列表为空", () => {
@@ -33,5 +34,33 @@ describe("tools checkRepeat", () => {
             repeatIndex: 2
         })
 
+    })
+})
+
+describe("js-tools omit", () => {
+    it('omit删除对象中元素', () => {
+        let obj = {
+            a: ['c'],
+            b: 2,
+            c: undefined,
+            d: null,
+            e: '',
+            f: 0,
+        }
+        let omitRes = omit(obj, ['a', 'c', 'e'])
+        expect(omitRes).toEqual({
+            b: 2,
+            d: null,
+            f: 0,
+        })
+        omitRes = omit(obj, ['a', 't'])
+        expect(omitRes).toEqual({
+            b: 2,
+            c: undefined,
+            d: null,
+            e: '',
+            f: 0,
+
+        })
     })
 })
