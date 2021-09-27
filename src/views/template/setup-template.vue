@@ -10,6 +10,7 @@
   <div class="">
     <button @click="switchLang">{{ langText }}</button>
   </div>
+  <el-button type='primary'>el按钮</el-button>
 </template>
 
 <script lang='ts'>

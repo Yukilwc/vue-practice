@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 
 const app = createApp(App)
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+app.use(ElementPlus)
 
 // ============================================================  全局级别演示 START
 // 全局错误捕获
