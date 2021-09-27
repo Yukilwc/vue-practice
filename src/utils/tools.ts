@@ -1,5 +1,6 @@
 
 import * as R from 'ramda'
+import { stringifyQuery } from 'vue-router';
 // import { NProvide } from "@/typings/provide";
 
 const timer = (time: number) => {
@@ -65,7 +66,7 @@ const omit = (obj: any, list: readonly string[]) => {
     // });
     // return newObj
 }
-type IStyleList2Str = (styleList: {name:string,value:string}[]) => string
+type IStyleList2Str = (styleList: { name: string, value: string }[]) => string
 const styleList2Str: IStyleList2Str = (styleList) => {
     let styleStr = styleList.reduce((total, curr) => {
         let name = curr.name
@@ -81,11 +82,30 @@ const styleList2Str: IStyleList2Str = (styleList) => {
     return styleStr
 
 }
+type IMapObj = <T extends Record<string, any>, S extends Record<string, any>>(target: T, source: S) => T
+
+const mapObj: IMapObj = (target, source) => {
+    if (!target || !source) {
+        console.error('mappingObject params error,target or source is not Object', target, source)
+        return target
+    }
+    let targetKeys = Object.keys(target) as (keyof typeof target)[];
+    let sourceKeys = Object.keys(source) as (keyof typeof source)[];
+    let resultRes = {...target}
+    targetKeys.forEach((key) => {
+        if (sourceKeys.includes(key as string)) {
+            resultRes[key] = source[key as keyof typeof source] as any
+        }
+    });
+    return resultRes
+
+}
 
 // const provideTestInJs: NProvide.IProductTest = () => '测试ts中对全局类型使用'
 export {
     timer,
     checkRepeat,
     omit,
-    styleList2Str
+    styleList2Str,
+    mapObj
 }
