@@ -55,7 +55,7 @@ import { pluginTest } from './plugins/pluginTest'
 app.use(pluginTest, { config: true })
 
 // 多语言
-import {i18n} from '@/language/index'
+import { i18n } from '@/language/index'
 import { NProvide } from './typings/provide'
 // console.log('==========i18n',i18n)
 // import { createI18n } from 'vue-i18n'
@@ -84,5 +84,6 @@ import { NProvide } from './typings/provide'
 app.use(i18n)
 
 app.use(store).use(router).mount('#app')
-import {omit} from './utils/js-tools'
-console.log('==========',omit)
+import { omit } from './utils/js-tools'
+console.log('==========', omit)
+let omitRes = omit({},[])

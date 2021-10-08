@@ -23,14 +23,18 @@ import {
   onMounted,
 } from "vue";
 import {omit} from '@/utils/js-tools'
+// let {omit}  = require('@/utils/js-tools')
+
 import { useI18n } from "vue-i18n";
 import { i18n } from "@/language/index";
 import { NProvide } from "@/typings/provide";
+import {mapObj} from '@/utils/tools'
 import "@/utils/EditableTable";
 export default defineComponent({
   components: {},
   setup(props, context) {
     console.log('==========omit',omit)
+    let omitRes = omit()
     // 最好不要通过改方式使用全局变量
     // const instance = getCurrentInstance();
     // let { $testGlobal, $testStr} = instance?.proxy;
