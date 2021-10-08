@@ -8,7 +8,11 @@ const omit = (obj, list) => {
   });
   return newObj
 }
+const byId = (id,list) => {
+  return {}
+}
 
 export {
-    omit
+    omit,
+    byId
 }

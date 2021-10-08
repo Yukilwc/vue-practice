@@ -84,3 +84,5 @@ import { NProvide } from './typings/provide'
 app.use(i18n)
 
 app.use(store).use(router).mount('#app')
+import {omit} from './utils/js-tools'
+console.log('==========',omit)
