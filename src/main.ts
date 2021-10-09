@@ -86,4 +86,14 @@ app.use(i18n)
 app.use(store).use(router).mount('#app')
 import { omit } from './utils/js-tools'
 console.log('==========', omit)
-let omitRes = omit({},[])
+let omitRes = omit({}, [])
+
+import AOS from 'aos'
+import { IInit } from 'aos'
+// console.log('==========AOS.init',AOS.init)
+import {myWindow} from '@/typings/customWindow'
+myWindow.insertWindowVariable = () => {
+  console.log("==========insertWindowVariable ");
+};
+myWindow.Reflect
+

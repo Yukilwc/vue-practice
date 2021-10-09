@@ -10,7 +10,8 @@
   <div class="">
     <button @click="switchLang">{{ langText }}</button>
   </div>
-  <el-button type='primary'>el按钮</el-button>
+  <el-button type="primary">el按钮</el-button>
+  <div class="" id="elementId"></div>
 </template>
 
 <script lang='ts'>
@@ -22,19 +23,36 @@ import {
   inject,
   onMounted,
 } from "vue";
-import {omit} from '@/utils/js-tools'
+import { omit } from "@/utils/js-tools";
 // let {omit}  = require('@/utils/js-tools')
-
+import AOS from "aos";
 import { useI18n } from "vue-i18n";
 import { i18n } from "@/language/index";
 import { NProvide } from "@/typings/provide";
-import {mapObj} from '@/utils/tools'
+import { mapObj } from "@/utils/tools";
 import "@/utils/EditableTable";
+import { myWindow } from "@/typings/customWindow";
 export default defineComponent({
   components: {},
   setup(props, context) {
-    console.log('==========omit',omit)
-    let omitRes = omit()
+    console.log("==========omit", omit);
+    AOS.init();
+    Reflect.set(window, "insertWindowVariable ", () => {});
+    // window as MyWindow
+    myWindow.Reflect;
+    myWindow.insertWindowVariable = () => {
+      console.log("==========insertWindowVariable ");
+    };
+    AOS.insertWindowVariable = () => {
+      console.log("==========insertWindowVariable ");
+    };
+    let node = document.querySelector("#elementId");
+    if (node) {
+      node.insertNode = () => {
+        console.log("==========insertNode");
+      };
+    }
+
     // 最好不要通过改方式使用全局变量
     // const instance = getCurrentInstance();
     // let { $testGlobal, $testStr} = instance?.proxy;
