@@ -31,7 +31,6 @@ import { i18n } from "@/language/index";
 import { NProvide } from "@/typings/provide";
 import { mapObj } from "@/utils/tools";
 import "@/utils/EditableTable";
-import { myWindow } from "@/typings/customWindow";
 export default defineComponent({
   components: {},
   setup(props, context) {
@@ -39,8 +38,8 @@ export default defineComponent({
     AOS.init();
     Reflect.set(window, "insertWindowVariable ", () => {});
     // window as MyWindow
-    myWindow.Reflect;
-    myWindow.insertWindowVariable = () => {
+    window.Reflect;
+    window.insertWindowVariable = () => {
       console.log("==========insertWindowVariable ");
     };
     AOS.insertWindowVariable = () => {

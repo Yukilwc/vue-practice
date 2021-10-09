@@ -91,9 +91,9 @@ let omitRes = omit({}, [])
 import AOS from 'aos'
 import { IInit } from 'aos'
 // console.log('==========AOS.init',AOS.init)
-import {myWindow} from '@/typings/customWindow'
-myWindow.insertWindowVariable = () => {
+// import {myWindow} from '@/typings/customWindow'
+window.insertWindowVariable = () => {
   console.log("==========insertWindowVariable ");
 };
-myWindow.Reflect
+window.Reflect
 
