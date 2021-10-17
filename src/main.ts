@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 
 const app = createApp(App)
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+app.use(ElementPlus)
 
 // ============================================================  全局级别演示 START
 // 全局错误捕获
@@ -52,7 +55,7 @@ import { pluginTest } from './plugins/pluginTest'
 app.use(pluginTest, { config: true })
 
 // 多语言
-import {i18n} from '@/language/index'
+import { i18n } from '@/language/index'
 import { NProvide } from './typings/provide'
 // console.log('==========i18n',i18n)
 // import { createI18n } from 'vue-i18n'
@@ -81,3 +84,16 @@ import { NProvide } from './typings/provide'
 app.use(i18n)
 
 app.use(store).use(router).mount('#app')
+import { omit } from './utils/js-tools'
+console.log('==========', omit)
+let omitRes = omit({}, [])
+
+import AOS from 'aos'
+import { IInit } from 'aos'
+// console.log('==========AOS.init',AOS.init)
+// import {myWindow} from '@/typings/customWindow'
+window.insertWindowVariable = () => {
+  console.log("==========insertWindowVariable ");
+};
+window.Reflect
+

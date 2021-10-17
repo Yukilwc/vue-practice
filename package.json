@@ -10,10 +10,14 @@
     "vitebuild": "vue-tsc --noEmit && vite build",
     "viteserve": "vite preview",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e"
+    "test:e2e": "vue-cli-service test:e2e",
+    "tsc": "tsc -t ESNext ./src/utils/EditableTable.ts"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "core-js": "^3.6.5",
+    "element-plus": "*",
+    "qs": "^6.10.1",
     "ramda": "^0.27.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.0-0",
