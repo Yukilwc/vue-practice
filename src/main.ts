@@ -92,8 +92,6 @@ import AOS from 'aos'
 import { IInit } from 'aos'
 // console.log('==========AOS.init',AOS.init)
 // import {myWindow} from '@/typings/customWindow'
-window.insertWindowVariable = () => {
-  console.log("==========insertWindowVariable ");
-};
+
 window.Reflect
 

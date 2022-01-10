@@ -18,24 +18,29 @@
       </div>
     </div>
   </div>
+  <div class="">
+    <CircleBall></CircleBall>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import Ellipsis from "@/components/Ellipsis/index.vue";
+import CircleBall from "@/components/CircleBall.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
     Ellipsis,
+    CircleBall,
   },
 });
 </script>
 <style lang="scss" scoped>
 .fixed-width {
   width: 400px;
-  background-color: rgba(128, 109, 158,0.3);
-  font-size:18px;
+  background-color: rgba(128, 109, 158, 0.3);
+  font-size: 18px;
   line-height: 24px;
   font-weight: bold;
   letter-spacing: 2px;
